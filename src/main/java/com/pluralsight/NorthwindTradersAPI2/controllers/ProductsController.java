@@ -27,17 +27,17 @@ public class ProductsController {
     public List<Product> getAllProducts() {
         return products;
     }
-    @RequestMapping(path ="/products/{productName}", method = RequestMethod.GET)
-    public Product getProductById(@PathVariable int productName) {
+    @RequestMapping(path ="/products/{productId}", method = RequestMethod.GET)
+    public Product getProductById(@PathVariable int productId) {
         for (Product product : products) {
-            if(product.getProductId() == productName) {
+            if(product.getProductId() == productId) {
                 return product;
             }
 
         }
         return null;
     }
-    @RequestMapping(path ="/products/{categoryId}", method = RequestMethod.GET)
+    @RequestMapping(path ="/products/categoryId/{categoryId}", method = RequestMethod.GET)
     public Product getProductByCategoryId(@PathVariable int categoryId) {
         for (Product product : products) {
             if(product.getCategoryId() == categoryId) {
@@ -47,7 +47,7 @@ public class ProductsController {
         }
         return null;
     }
-    @RequestMapping(path ="/products/{productName}", method = RequestMethod.GET)
+    @RequestMapping(path ="/products/productName/{productName}", method = RequestMethod.GET)
     public Product getProductByProductName(@PathVariable String productName) {
         for (Product product : products) {
             if(product.getProductName().equalsIgnoreCase(productName)) {
@@ -57,7 +57,7 @@ public class ProductsController {
         }
         return null;
     }
-    @RequestMapping(path ="/products/{productName}", method = RequestMethod.GET)
+    @RequestMapping(path ="/products/unitPrice/{unitPrice}", method = RequestMethod.GET)
     public Product getProductByPrice(@PathVariable double unitPrice) {
         for (Product product : products) {
             if(product.getUnitPrice() < unitPrice) {
