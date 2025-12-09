@@ -2,6 +2,7 @@ package com.pluralsight.NorthwindTradersAPI2.controllers;
 
 
 import com.pluralsight.NorthwindTradersAPI2.models.Category;
+import com.pluralsight.NorthwindTradersAPI2.models.Product;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,15 @@ public class CategoriesController {
     public Category getCategoryById(@PathVariable int categoryId) {
         for (Category category : categories) {
             if (category.getCategoryId() == categoryId) {
+                return category;
+            }
+        }
+        return null;
+    }
+    @RequestMapping(path ="/products/{categoryName}", method = RequestMethod.GET)
+    public Category getProductByCategoryName(@PathVariable String categoryName) {
+        for (Category category : categories) {
+            if(category.getCategoryName().equalsIgnoreCase(categoryName)) {
                 return category;
             }
         }

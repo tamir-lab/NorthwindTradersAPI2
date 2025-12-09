@@ -27,14 +27,45 @@ public class ProductsController {
     public List<Product> getAllProducts() {
         return products;
     }
-    @RequestMapping(path ="/products/{productId}", method = RequestMethod.GET)
-    public Product getProductById(@PathVariable int productId) {
+    @RequestMapping(path ="/products/{productName}", method = RequestMethod.GET)
+    public Product getProductById(@PathVariable int productName) {
         for (Product product : products) {
-            if(product.getProductId() == productId) {
+            if(product.getProductId() == productName) {
                 return product;
             }
 
         }
         return null;
     }
+    @RequestMapping(path ="/products/{categoryId}", method = RequestMethod.GET)
+    public Product getProductByCategoryId(@PathVariable int categoryId) {
+        for (Product product : products) {
+            if(product.getCategoryId() == categoryId) {
+                return product;
+            }
+
+        }
+        return null;
+    }
+    @RequestMapping(path ="/products/{productName}", method = RequestMethod.GET)
+    public Product getProductByProductName(@PathVariable String productName) {
+        for (Product product : products) {
+            if(product.getProductName().equalsIgnoreCase(productName)) {
+                return product;
+            }
+
+        }
+        return null;
+    }
+    @RequestMapping(path ="/products/{productName}", method = RequestMethod.GET)
+    public Product getProductByPrice(@PathVariable double unitPrice) {
+        for (Product product : products) {
+            if(product.getUnitPrice() < unitPrice) {
+                return product;
+            }
+
+        }
+        return null;
+    }
+
 }
